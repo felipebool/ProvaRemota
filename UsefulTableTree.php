@@ -29,10 +29,10 @@ class UsefulTableTree {
         $table_header = "<table><thead><tr>";
 
         foreach ($this->header_fields as $field) {
-            $table_header .= "<th>$field<th>";
+            $table_header .= "<th>$field</th>";
         }
 
-        $table_header .= "<tr></thead>";
+        $table_header .= "</tr></thead>";
         return $table_header;    
     }
 
@@ -69,7 +69,7 @@ class UsefulTableTree {
                 // último nível, setado em queuefy_body
                 if ($key == 'lvl3') {
                     $tr_element  .= "<td>$value</td>";
-                    $single_body .= "<tr>$tr_element<tr>";
+                    $single_body .= "<tr>$tr_element</tr>";
                     $tr_element = "";
                 }
                 else {
@@ -78,7 +78,7 @@ class UsefulTableTree {
             }
         }
 
-        $single_body .= "<tbody>";
+        $single_body .= "</tbody>";
 
         return $single_body;
     }
