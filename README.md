@@ -10,6 +10,7 @@ todos os níveis mais distantes da raiz *devem* possuir pelo menos uma folha.
 ## Atributos da classe
 Descrição dos atributos
 
+
 ## Métodos
 ### __construct
 Construtor da classe.
@@ -19,10 +20,12 @@ Construtor da classe.
 * $header\_fields: Vetor contendo os nomes das colunas da tabela
 
 
+
 ### get\_table()
 Este método é o único método público da classe. Ele chama os métodos responsáveis
 por construir as partes intermediárias da tabela (cabeçalho, corpo e rodapé), concatena
 seus retornos e retorna a tabela montada.
+
 
 
 ### get\_table\_header()
@@ -30,10 +33,12 @@ Retorna o cabeçalho da tabela construído de acordo com os nomes das colunas pa
 para o construtor e armazenados em $this->header\_fields.
 
 
+
 ### get\_table\_body()
 Este método itera sobre o nível mais alto da estrutura de dados. Cada um dos nós do
 primeiro nível é gerado isoladamente, inclusive, com seu próprio <tbody>. A tarefa
 de gerar os <tbody> é delegada para a função get\_single\_body().
+
 
 
 ### get\_single\_body()
@@ -49,6 +54,7 @@ que itera sobre $queued\_body a partir de $qbody\_index.
 * $data: Uma subárvore com raiz no primeiro nível de $this->data
 
 
+
 ### queuefy\_body()
 Este método implementa uma busca em profundidade recursiva sobre a estrutura
 de dados múltinível recebida por parâmetro e gera um array de arrays onde cada
@@ -60,10 +66,12 @@ elemento é um array associativo no seguinte formato: ('nível do nó' => 'texto
 * $level: Utilizado para manter determinar o nível atual e é utilizado como chave para $queue
 
 
+
 ### get\_table\_footer()
 Método implementado somente para alterações futuras onde seja necessário um footer
 customizado, sua função nesta classe atualmente é só fechar a tag </table>, mas poderia
 ser utilizado para adicionar informações no rodapé da tabela.
+
 
 
 ### max\_level()
@@ -75,6 +83,7 @@ multinível.
 * $qbody: O array gerado por $this->queuefy\_body()
 
 
+
 ### get\_rowspan()
 Este método retorna o rowspan correto de cada nível, isto é feito contando o número de
 elementos do último nível entre $index e a próxima ocorrência do mesmo nível ($level)
@@ -84,3 +93,4 @@ em $qbody, ou o final de $qbody.
 * $qbody: O array gerado por $this->queuefy\_body()
 * $level: Nível do nó para o qual se está definindo o rowspan
 * $index: Posição de $qbody a partir da qual começa o nível que se está definindo o rowspan
+
