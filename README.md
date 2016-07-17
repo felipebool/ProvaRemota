@@ -9,7 +9,9 @@ todos os níveis mais distantes da raiz *devem* possuir pelo menos uma folha.
 ![Alt Testes](images/testes.png "Alguns testes variando quantidade de elementos e altura da árvore")
 
 ## Atributos da classe
-A classe possui dois atributos 
+A classe possui dois atributos privados que armazenam os valores passados ao construtor.
+$data armazena a estrutura de dados para ser transformada em tabela e $header\_fields
+armazena um array contendo os nomes das colunas da tabela.
 
 
 ## Métodos
@@ -21,58 +23,37 @@ Construtor da classe.
 * $header\_fields: Vetor contendo os nomes das colunas da tabela
 
 
-
-### get\_table()
-Este método é o único método público da classe. Ele chama os métodos responsáveis
-por construir as partes intermediárias da tabela (cabeçalho, corpo e rodapé), concatena
-seus retornos e retorna a tabela montada.
-
+### get\_table\_content()
+Retorna os dados organizados em três níveis: tbody, tr e td, onde td é um array
+no formato ('td' => 'conteúdo'), ou ('td' => 'conteúdo', 'rowspan' => integer)
+quando o rowspan precisa ser setado.
 
 
 ### get\_table\_header()
-Retorna o cabeçalho da tabela construído de acordo com os nomes das colunas passados
-para o construtor e armazenados em $this->header\_fields.
-
-
-
-### get\_table\_body()
-Este método itera sobre o nível mais alto da estrutura de dados. Cada um dos nós do
-primeiro nível é gerado isoladamente, inclusive, com seu próprio <tbody>. A tarefa
-de gerar os <tbody> é delegada para a função get\_single\_body().
-
+Retorna um array contendo os nomes das colunas da tabela.
 
 
 ### get\_single\_body()
-Este método é responsável por gerar um <tbody> para uma árvore recebida como parâmetro.
+Este método é responsável por gerar um tbody para uma árvore recebida como parâmetro.
 Ele primeiro chama $this->queuefy\_body() que transforma a representação em múltiplos
-níveis da estrutura da tabela em uma lista, depois define o nível máximo daquela árvore
-recebida e então itera sobre a lista gerada, armazenando o índice atual em $qbody\_index.
-Sempre que é encontrado um item do último nível o <tr> é fechado, e concatenado a $single\_tbody,
-caso contrário é criado um <td> que tem seu rowspan definido por $this->get\_rowspan(),
-que itera sobre $queued\_body a partir de $qbody\_index.
+níveis da estrutura da tabela em uma lista, depois define o nível máximo da árvore
+recebida e então itera sobre a lista gerada, armazenando o índice atual em $qbody\_index
+e construindo a estrutura da tabela.
 
 #### Parâmetros
 * $data: Uma subárvore com raiz no primeiro nível de $this->data
-
 
 
 ### queuefy\_body()
 Este método implementa uma busca em profundidade recursiva sobre a estrutura
-de dados múltinível recebida por parâmetro e gera um array de arrays onde cada
-elemento é um array associativo no seguinte formato: ('nível do nó' => 'texto do nó').
+de dados múltinível recebida por parâmetro e gera um array de arrays associativos
+no seguinte formato: ('nível do nó' => 'texto do nó'), ou ('nível do nó' => 'conteúdo', 'rowspan' => 'valor')
+quando necessário.
 
 #### Parâmetros
 * $data: Uma subárvore com raiz no primeiro nível de $this->data
 * &$queue: Array passado por referência que será populado durante a busca pela árvore
-* $level: Utilizado para manter determinar o nível atual e é utilizado como chave para $queue
-
-
-
-### get\_table\_footer()
-Método implementado somente para alterações futuras onde seja necessário um footer
-customizado, sua função nesta classe atualmente é só fechar a tag </table>, mas poderia
-ser utilizado para adicionar informações no rodapé da tabela.
-
+* $level: Utilizado para determinar o nível atual e é utilizado como chave para $queue
 
 
 ### max\_level()
@@ -87,8 +68,8 @@ multinível.
 
 ### get\_rowspan()
 Este método retorna o rowspan correto de cada nível, isto é feito contando o número de
-elementos do último nível entre $index e a próxima ocorrência do mesmo nível ($level)
-em $qbody, ou o final de $qbody.
+elementos do último nível entre a posição recebida em $index + 1 e a próxima ocorrência
+do mesmo nível ($level) em $qbody, ou o final de $qbody.
 
 #### Parâmetros 
 * $qbody: O array gerado por $this->queuefy\_body()
