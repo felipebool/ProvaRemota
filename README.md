@@ -9,7 +9,7 @@ todos os níveis mais distantes da raiz *devem* possuir pelo menos uma folha.
 ![Alt Testes](images/testes.png "Alguns testes variando quantidade de elementos e altura da árvore")
 
 ## Atributos da classe
-Descrição dos atributos
+A classe possui dois atributos 
 
 
 ## Métodos
