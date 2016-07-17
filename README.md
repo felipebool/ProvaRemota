@@ -1,11 +1,12 @@
 # UsefulTableTree
-Esta classe é responsável por transformar uma estrutura de dados em níveis
-(array( x=>array(y=>array(...)))) em uma tabela HTML com todos os seus rowspans
-setados corretamente.
+Esta classe é responsável por transformar uma estrutura de arrays multinível
+em uma tabela com os rowspans devidamente setados.
 
 ## Particularidade:
 A classe funciona para quantos níveis a estrutura de dados possuir, entretanto,
 todos os níveis mais distantes da raiz *devem* possuir pelo menos uma folha.
+
+![Alt Testes](images/testes.png "Alguns testes variando quantidade de elementos e altura da árvore")
 
 ## Atributos da classe
 Descrição dos atributos
