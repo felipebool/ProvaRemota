@@ -1,1 +1,9 @@
 *.swp
+
+index.php
+
+composer.phar
+composer.lock
+vendor/
+
+View/cache/
