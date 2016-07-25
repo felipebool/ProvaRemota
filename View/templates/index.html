@@ -17,6 +17,7 @@
       <button type="submit" class="btn btn-primary">Buscar</button>
    </form>
 
+   {# Gera tabela somente se recebeu conteúdo #}
    {% if header is defined and content is defined %}
    <table class="table table-bordered table-hover">
       <thead>
@@ -45,6 +46,7 @@
    </table>
    {% endif %}
 
+   {# Imprime mensagem caso nada tenha sido encontrado #}
    {% if query_result is defined and query_result == false %}
       <p>Nenhum resultado encontrado</p>
    {% endif %}

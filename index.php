@@ -9,10 +9,11 @@ use Abraham\TwitterOAuth\TwitterOAuth;
 $twig_data = array();
 
 if (isset($_POST['twitter_topic'])) {
-   // retrieving tweets
+   // buscando tweets
    $connection = new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET, ACCESS_TOKEN, ACCESS_TOKEN_SECRET);
    $result = $connection->get('search/tweets', array('q' => $_POST['twitter_topic'], 'count' => 100));
 
+   // popula estrutura e constrói árvore somente se há algum tweet relacionado
    if (!empty($result->statuses)) {
       // populating data structure
       $tabletree = array();
@@ -36,6 +37,7 @@ if (isset($_POST['twitter_topic'])) {
       $twig_data['content']      = $usefultabletree->get_table_content();
    }
    else {
+      // utilizado para imprimir Não encontrado no template
       $twig_data['query_result'] = false;
    }
 }
