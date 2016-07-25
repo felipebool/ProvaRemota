@@ -1,8 +1,8 @@
 # Prova remota para desenvolvedor backend
 Implementação de uma classe que transforma uma estrutura de árvore em uma tabela
-html setando os rowspans corretamente. Como caso de testes foi utilizada a API
-do Twitter para buscar os duzentos últimos Tweets relacionados e alguma palavra
-chave e então classificá-los em mês, dia e hora. Uma implementação funcional
+html setando os rowspans corretamente. Como caso de testes, foi utilizada a API
+do Twitter para buscar os duzentos últimos Tweets relacionados a alguma palavra-chave
+e então classificá-los em mês, dia e hora. Uma implementação funcional
 pode ser encontrada em [fmlopes.com.br/ProvaRemota/](https://www.fmlopes.com.br/ProvaRemota/).
 
 ## Instalação
@@ -17,8 +17,7 @@ pode ser encontrada em [fmlopes.com.br/ProvaRemota/](https://www.fmlopes.com.br/
 
 
 ## UsefulTableTree
-Esta classe é responsável por transformar uma estrutura de arrays multinível
-em uma tabela com os rowspans devidamente setados.
+Esta classe é responsável por transformar uma estrutura de árvore em uma tabela com os rowspans devidamente setados.
 
 ### Particularidade:
 A classe funciona para quantos níveis a estrutura de dados possuir, entretanto,
