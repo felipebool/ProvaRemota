@@ -15,7 +15,6 @@ if (isset($_POST['twitter_topic'])) {
 
    // popula estrutura e constrói árvore somente se há algum tweet relacionado
    if (!empty($result->statuses)) {
-      // populating data structure
       $tabletree = array();
       foreach ($result->statuses as $result) {
          $entry = explode(' ', $result->created_at);
@@ -37,7 +36,7 @@ if (isset($_POST['twitter_topic'])) {
       $twig_data['content']      = $usefultabletree->get_table_content();
    }
    else {
-      // utilizado para imprimir Não encontrado no template
+      // utilizado para imprimir mensagem de não encontrado no template
       $twig_data['query_result'] = false;
    }
 }
