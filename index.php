@@ -43,7 +43,7 @@ if (isset($_POST['twitter_topic'])) {
 Twig_Autoloader::register();
 
 $loader   = new Twig_Loader_Filesystem('View/templates');
-$twig     = new Twig_Environment($loader, array('cache' => 'View/cache'));
+$twig     = new Twig_Environment($loader, array('cache' => false));
 $template = $twig->loadTemplate('index.html');
 
 echo $template->render($twig_data);
