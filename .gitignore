@@ -1,8 +1,6 @@
 *.swp
 *.bkp
 
-index.php
-
 composer.phar
 composer.lock
 vendor/
